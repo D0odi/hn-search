@@ -2,7 +2,7 @@
   "name": "hacknews",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://D0odi.github.io/hacker-news-searcher",
+  "homepage": "https://D0odi.github.io/hn-search",
   "type": "module",
   "scripts": {
     "dev": "vite",
