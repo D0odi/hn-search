@@ -25,13 +25,10 @@ const Post = ({index, text, postDisplay}) => {
         <motion.div layout
         initial={{y: -20}}
         animate={{y: 0}}
-        whileHover={{ cursor: "pointer", 
-                      boxShadow: "0 0 10px rgb(255, 102, 0)",
-                      borderColor: "transparent",
-                      scale: 0.95,
-                      transition: {duration: 0.3, ease: easeInOut}}}
+        whileHover={{ cursor: "pointer",
+                      scale: 0.95,}}
         key={index} className='post' onClick={() => postDisplay(index)}>
-            <motion.h1>{companyName(text)}</motion.h1>
+            <motion.h1>даже работники {companyName(text)} уважают манюню</motion.h1>
         </motion.div>
      );
 }

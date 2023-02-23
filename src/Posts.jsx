@@ -1,9 +1,8 @@
 import Post from "./Post";
 import "./App.css"
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, easeInOut } from "framer-motion";
 
-const Posts = ({posts, words, postDisplay}) => {
-    if (posts.length == 0) return;
+const Posts = ({posts, words, postDisplay, isLocked}) => {
 
     const filter = (text) => {
         if (text == null || text == '') return false;
@@ -16,7 +15,8 @@ const Posts = ({posts, words, postDisplay}) => {
     }
 
     return (
-        <motion.div layout className="posts_holder">
+        <motion.div
+        transition={{duration: 2}} layout className="posts_holder">
                 {posts.map((post, index) => {   
                     if (post.text == null || !filter(post.text)) return;
                     return (

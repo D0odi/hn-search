@@ -40,14 +40,19 @@ body {
   font-family: 'Lora', serif;
 }
 .wrapper_left, .wrapper_right {
-  position: absolute;
-  top: 10%; 
+  position: fixed;
+  top: 6rem; 
 }
 .wrapper_left { 
-  left: 7%;
+  left: 8.43rem;
 }
 .wrapper_right {
-  right: 7%;
+  justify-content: right;
+  position: fixed;
+  min-height: 40rem;
+  min-width: 65rem;
+  right: 8.43rem;
+  border-left: 3px solid rgb(255, 102, 0);
 }
 
 .link_input, .words_input {
@@ -59,7 +64,10 @@ body {
   border: 2px solid rgb(255, 102, 0);
 }
 .link_input {
-  width: 70rem;
+  position: relative;
+}
+.link_input[disabled] {
+  background-color: #ffffff;
 }
 .words_input {
   width: 28rem;
@@ -82,17 +90,21 @@ input:focus  {
   max-width: 26.7rem;
 }
 .posts_holder {
+  position: sticky;
   background-color: rgb(235,235,228);
+  justify-content: right;
   margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
-  max-width: 71.2rem;
+  max-width: 67.5rem;
   max-height: 38rem;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 .post{
-  margin: 1px;
-  border: 3px solid white;
+  background-color: rgb(235,235,228);
+  margin: 4px;
+  border: 4px solid white;
   border-radius: 10px;
   padding-inline: 10px;
   max-width: 40rem;
@@ -101,11 +113,13 @@ input:focus  {
 
 .word_container {
   padding: 6px;
-  background: white;
+  background: rgb(255, 255, 255);
+  border-left: 2px solid rgb(255, 102, 0);
+  border-bottom: 2px solid rgb(255, 102, 0);
   border-radius: 10px;
-  border: 1px solid rgb(255, 102, 0);
-  color: rgba(0, 0, 0, 0.822);
+  color: rgb(0, 0, 0);
 }
+
 
 .addWord, .linkLock {
   background-color: transparent;
@@ -121,13 +135,10 @@ input:focus  {
   left: 26.3rem;
 }
 .linkLock {
-  left: 68.3rem;
+  position: fixed;
+  top: 6.5rem;
+  left: 112.4rem;
+
 }
-/* .post_text {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-} */
 
 

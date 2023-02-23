@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import Words from './Words.jsx'
-import { motion, AnimatePresence} from 'framer-motion'
+import { motion, AnimatePresence, easeInOut} from 'framer-motion'
 import { FaPlus, FaLockOpen, FaLock } from "react-icons/fa";
 import Posts from './Posts'; 
 
@@ -79,7 +79,15 @@ function App() {
         </AnimatePresence>
       </div>
       <div className="wrapper_right">
-        <input type="text" className="link_input" placeholder='HN story link...' disabled={isLocked} />
+        <motion.input type="text" 
+          className="link_input" placeholder='HN story link...' disabled={isLocked}
+          initial={{width: "60rem", left: "7.5rem"}}
+          transition={{type: "tween", duration: 2.5, ease: easeInOut}}
+          animate={{
+            width: isLocked ? '0rem' : '60rem',
+            left: isLocked ? '67.95rem' : '7.5rem',
+            opacity: isLocked ? 0 : 1,
+          }}/>
         <motion.button
           className='linkLock' onClick={toggleLock}>
           <motion.div 
@@ -90,7 +98,7 @@ function App() {
                  :      <FaLockOpen color='rgb(255, 102, 0)' size='30px' />}
           </motion.div>
         </motion.button>
-        <Posts posts={posts} words={words} postDisplay={postDisplay}></Posts>
+        <Posts posts={posts} words={words} postDisplay={postDisplay} isLocked={isLocked}></Posts>
       </div>
     </div>
   )
