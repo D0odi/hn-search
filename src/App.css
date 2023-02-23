@@ -12,7 +12,6 @@ h1 {
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
-  background-color: #f5f5f5;
 }
 
 /* Change scrollbar thumb color */
@@ -22,7 +21,7 @@ h1 {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: rgb(235,235,228);
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -48,11 +47,11 @@ body {
 }
 .wrapper_right {
   justify-content: right;
-  position: fixed;
+  justify-items: right;
   min-height: 40rem;
   min-width: 65rem;
+  max-width: min-content;
   right: 8.43rem;
-  border-left: 3px solid rgb(255, 102, 0);
 }
 
 .link_input, .words_input {
@@ -62,9 +61,6 @@ body {
   font-family: 'Lora', serif;
   font-weight: 500;
   border: 2px solid rgb(255, 102, 0);
-}
-.link_input {
-  position: relative;
 }
 .link_input[disabled] {
   background-color: #ffffff;
@@ -90,10 +86,9 @@ input:focus  {
   max-width: 26.7rem;
 }
 .posts_holder {
-  position: sticky;
-  background-color: rgb(235,235,228);
+  background-color: transparent;
   justify-content: right;
-  margin-top: 1rem;
+  margin-top: 4.5rem;
   display: flex;
   flex-wrap: wrap;
   max-width: 67.5rem;
@@ -129,7 +124,7 @@ input:focus  {
   top: 0.6rem;
   height: 40px;
   width: 40px;
-  border: 0px;
+  border: none;
 }
 .addWord {
   left: 26.3rem;
@@ -138,7 +133,6 @@ input:focus  {
   position: fixed;
   top: 6.5rem;
   left: 112.4rem;
-
 }
 
 

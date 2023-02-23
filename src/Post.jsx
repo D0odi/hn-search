@@ -1,7 +1,7 @@
 import './App.css'
 import { easeInOut, motion } from 'framer-motion';
 
-const Post = ({index, text, postDisplay}) => {  
+const Post = ({index, text}) => {  
 
     const companyName = (text) => {
         text = cleanAndDecodeHTML(text)
@@ -22,13 +22,11 @@ const Post = ({index, text, postDisplay}) => {
 
 
     return ( 
-        <motion.div layout
-        initial={{y: -20}}
-        animate={{y: 0}}
+        <motion.div
         whileHover={{ cursor: "pointer",
                       scale: 0.95,}}
-        key={index} className='post' onClick={() => postDisplay(index)}>
-            <motion.h1>даже работники {companyName(text)} уважают манюню</motion.h1>
+        key={index} className='post'>
+            <motion.h1>{companyName(text)}</motion.h1>
         </motion.div>
      );
 }

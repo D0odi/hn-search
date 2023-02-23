@@ -15,12 +15,11 @@ const Posts = ({posts, words, postDisplay, isLocked}) => {
     }
 
     return (
-        <motion.div
-        transition={{duration: 2}} layout className="posts_holder">
+        <motion.div className="posts_holder">
                 {posts.map((post, index) => {   
                     if (post.text == null || !filter(post.text)) return;
                     return (
-                        <motion.div layout>
+                        <motion.div onClick={() => postDisplay(index)}>
                             <Post
                                 index={index}
                                 text={post.text}

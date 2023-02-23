@@ -10,7 +10,7 @@ function App() {
   const [posts, setPosts] = useState([])
   const [link, setLink] = useState("");
   const [comments, setComments] = useState([])
-  const [selectedPost, setSelectedPost] = useState(1)
+  const [selectedPost, setSelectedPost] = useState(null)
 
   useEffect(() => {
     fetch(link)
@@ -81,11 +81,11 @@ function App() {
       <div className="wrapper_right">
         <motion.input type="text" 
           className="link_input" placeholder='HN story link...' disabled={isLocked}
-          initial={{width: "60rem", left: "7.5rem"}}
+          initial={{position: 'absolute', left: '112.4rem'}}
           transition={{type: "tween", duration: 2.5, ease: easeInOut}}
           animate={{
-            width: isLocked ? '0rem' : '60rem',
-            left: isLocked ? '67.95rem' : '7.5rem',
+            width: isLocked ? '0rem' : '67.5rem',
+            left: isLocked ? '65.95rem' : '0rem',
             opacity: isLocked ? 0 : 1,
           }}/>
         <motion.button
@@ -98,7 +98,10 @@ function App() {
                  :      <FaLockOpen color='rgb(255, 102, 0)' size='30px' />}
           </motion.div>
         </motion.button>
-        <Posts posts={posts} words={words} postDisplay={postDisplay} isLocked={isLocked}></Posts>
+        <motion.div animate={{y: isLocked ? "-4.5rem" : "0rem"
+                              }} transition={{duration: 2}}>
+          <Posts posts={posts} words={words} postDisplay={postDisplay} isLocked={isLocked}></Posts>
+        </motion.div>
       </div>
     </div>
   )
