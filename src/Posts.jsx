@@ -1,8 +1,8 @@
 import Post from "./Post";
 import "./App.css"
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
-const Posts = ({posts, words}) => {
+const Posts = ({posts, words, postDisplay}) => {
     if (posts.length == 0) return;
 
     const filter = (text) => {
@@ -16,17 +16,19 @@ const Posts = ({posts, words}) => {
     }
 
     return (
-        <motion.div className="posts_holder">
-            {posts.map((post, index) => {   
-                if (post.text == null || !filter(post.text)) return;
-
-                return (
-                    <Post
-                        key={index}
-                        text={post.text}>
-                    </Post>
-                );
-            })}
+        <motion.div layout className="posts_holder">
+                {posts.map((post, index) => {   
+                    if (post.text == null || !filter(post.text)) return;
+                    return (
+                        <motion.div layout>
+                            <Post
+                                index={index}
+                                text={post.text}
+                                postDisplay={postDisplay}>
+                            </Post>
+                        </motion.div>
+                    );
+                })}
         </motion.div>
      );
 }

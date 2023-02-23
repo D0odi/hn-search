@@ -8,22 +8,18 @@ const Words = ({ words, removeWord }) => {
 
   return (
       <motion.div layout className="filters_holder">
-        <AnimatePresence>
           {words.map((word, index) => (
               <motion.div
                 layout
-                initial={{ opacity: 0, y: -20}}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ y: -20}}
-                transition={{ type: "spring", duration: 1, ease: "easeInOut"}}
-                whileHover={{ scale: 1.1, cursor: "pointer" }}
+                initial={{ opacity: 0.5, x: -190, y: -150}}
+                animate={{ opacity: 1, x: 0, y: 0}}
+                whileHover={{ scale: 1.1, cursor: "pointer", boxShadow: "0 0 10px rgb(255, 102, 0)"}}
                 onClick={() => removeWord(index)}
                 className="word_container"
               >
                 {word}
               </motion.div>
           ))}
-        </AnimatePresence>
       </motion.div>
   );
 };

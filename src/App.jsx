@@ -10,6 +10,7 @@ function App() {
   const [posts, setPosts] = useState([])
   const [link, setLink] = useState("");
   const [comments, setComments] = useState([])
+  const [selectedPost, setSelectedPost] = useState(1)
 
   useEffect(() => {
     fetch(link)
@@ -55,6 +56,10 @@ function App() {
     setWords(newWords)
   }
 
+  const postDisplay = (id) => {
+    setSelectedPost(id)
+  }
+
   return (
     <div className="App">
       <div className="wrapper_left">
@@ -85,7 +90,7 @@ function App() {
                  :      <FaLockOpen color='rgb(255, 102, 0)' size='30px' />}
           </motion.div>
         </motion.button>
-        <Posts posts={posts} words={words}></Posts>
+        <Posts posts={posts} words={words} postDisplay={postDisplay}></Posts>
       </div>
     </div>
   )
