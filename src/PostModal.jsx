@@ -3,9 +3,22 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const PostModal = ({selectedPostId, posts, isLocked}) => {
 
+    const links = []
+
+    const getLinks = (text) => {
+        const urlRegex = /(https?:\/\/[^\s]+)/g;
+        const matches = text.match(urlRegex);
+        if (matches) {
+          matches.forEach((match) => {
+            links.push(match);
+          });
+        }
+      };
+
     const cleanAndDecodeHTML = (text) => {
         const element = document.createElement('div');
         element.innerHTML = text;
+        getLinks(element.textContent);
         return element.textContent;
     }
     const convertTime = (time) => {
@@ -26,7 +39,7 @@ const PostModal = ({selectedPostId, posts, isLocked}) => {
             initial={{ x: 600, y: -150, opacity: 0, scale: 0, height: '20rem', width: '35rem' }}
             animate={{ x: 0, y: 0, opacity: 1, scale: 1, height: isLocked ? '20rem' : '25rem' }}
             exit={{ x: -600, y: 150, opacity: 0, scale: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1.5 }}
             className='post_modal'>
                 <AnimatePresence>
                     <motion.div
@@ -34,8 +47,9 @@ const PostModal = ({selectedPostId, posts, isLocked}) => {
                         <motion.div className='modal_by'>
                             <motion.h1 >{posts[selectedPostId].by}</motion.h1>
                             <motion.h1 >{convertTime(posts[selectedPostId].time)}</motion.h1>
+                            <motion.h1 className='model_links'>links</motion.h1>
                         </motion.div>
-                        <motion.p1 className='modal_text'>{cleanAndDecodeHTML(posts[selectedPostId].text)}</motion.p1>
+                        <motion.p className='modal_text'>{cleanAndDecodeHTML(posts[selectedPostId].text)}</motion.p>
                     </motion.div>
                 </AnimatePresence>
             </motion.div>))}

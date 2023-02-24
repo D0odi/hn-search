@@ -147,6 +147,10 @@ input:focus  {
   margin-inline: 10px;
   border-radius: 10px;
 }
+.model_links {
+  position: absolute;
+  left: 28rem;
+}
 
 .modal_text {
   font-size: 20px;
