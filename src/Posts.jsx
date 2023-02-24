@@ -16,20 +16,20 @@ const Posts = ({posts, words, postDisplay, isLocked}) => {
 
     return (
         <motion.div className="posts_holder">
-                {posts.map((post, index) => {   
-                    if (post.text == null || !filter(post.text)) return;
-                    return (
-                        <motion.div onClick={() => postDisplay(index)}>
-                            <Post
-                                index={index}
-                                text={post.text}
-                                postDisplay={postDisplay}>
-                            </Post>
-                        </motion.div>
-                    );
-                })}
-        </motion.div>
-     );
+            {posts.map((post, index) => {   
+                if (post.text == null || !filter(post.text)) return;
+                return (
+                    <motion.div key={index} onClick={() => postDisplay(index)}>
+                         <Post
+                            index={index}
+                            text={post.text}
+                            postDisplay={postDisplay}>
+                        </Post>
+                    </motion.div>
+                );
+            })}
+    </motion.div>
+    );
 }
  
 export default Posts;

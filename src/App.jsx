@@ -4,13 +4,14 @@ import Words from './Words.jsx'
 import { motion, AnimatePresence, easeInOut} from 'framer-motion'
 import { FaPlus, FaLockOpen, FaLock } from "react-icons/fa";
 import Posts from './Posts'; 
+import PostModal from './PostModal';
 
 function App() {
   const [words, setWords] = useState([])
   const [posts, setPosts] = useState([])
   const [link, setLink] = useState("");
   const [comments, setComments] = useState([])
-  const [selectedPost, setSelectedPost] = useState(null)
+  const [selectedPostId, setselectedPostId] = useState(null)
 
   useEffect(() => {
     fetch(link)
@@ -57,11 +58,16 @@ function App() {
   }
 
   const postDisplay = (id) => {
-    setSelectedPost(id)
+    setselectedPostId(id)
   }
 
   return (
     <div className="App">
+      <AnimatePresence>
+        <motion.div>
+          <PostModal selectedPostId={selectedPostId} posts={posts} setselectedPostId={setselectedPostId} />
+        </motion.div>
+      </AnimatePresence>
       <div className="wrapper_left">
         <input type="text" className="words_input" placeholder='filter words...' maxLength={25} />
         <motion.button
@@ -74,9 +80,7 @@ function App() {
             <FaPlus color='rgb(255, 102, 0)' size='30px' />
           </motion.div>
         </motion.button>
-        <AnimatePresence>
-          <Words words={words} removeWord={removeWord}></Words>
-        </AnimatePresence>
+        <Words words={words} removeWord={removeWord}></Words>
       </div>
       <div className="wrapper_right">
         <motion.input type="text" 
@@ -98,7 +102,7 @@ function App() {
                  :      <FaLockOpen color='rgb(255, 102, 0)' size='30px' />}
           </motion.div>
         </motion.button>
-        <motion.div animate={{y: isLocked ? "-4.5rem" : "0rem"
+        <motion.div animate={{y: isLocked ? "-5rem" : "0rem"
                               }} transition={{duration: 2}}>
           <Posts posts={posts} words={words} postDisplay={postDisplay} isLocked={isLocked}></Posts>
         </motion.div>

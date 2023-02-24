@@ -22,11 +22,8 @@ const Post = ({index, text}) => {
 
 
     return ( 
-        <motion.div
-        whileHover={{ cursor: "pointer",
-                      scale: 0.95,}}
-        key={index} className='post'>
-            <motion.h1>{companyName(text)}</motion.h1>
+        <motion.div whileHover={{ cursor: "pointer", scale: 0.95,}} className='post'>
+            <motion.h1 className='post_text'>{companyName(text)}</motion.h1>
         </motion.div>
      );
 }
