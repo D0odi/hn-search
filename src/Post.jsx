@@ -1,7 +1,19 @@
 import './App.css'
-import { easeInOut, motion } from 'framer-motion';
+import { AnimatePresence, easeInOut, motion } from 'framer-motion';
 
-const Post = ({index, text}) => {  
+const Post = ({index, text, words, selected}) => {  
+
+    const filter = (text) => {
+        if (text == null || text == '') return false;
+        const t = text.toLowerCase();
+        for (let i = 0; i < words.length; i++) {
+            const w = words[i].toLowerCase();
+            if (!t.includes(w)) {
+              return false;
+            }
+        }
+        return true;
+    }
 
     const companyName = (text) => {
         text = cleanAndDecodeHTML(text)
@@ -22,9 +34,17 @@ const Post = ({index, text}) => {
 
 
     return ( 
-        <motion.div whileHover={{ cursor: "pointer", scale: 0.95,}} className='post'>
-            <motion.h1 className='post_text'>{companyName(text)}</motion.h1>
-        </motion.div>
+        <AnimatePresence>
+            {filter(text) && (
+                <motion.div
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                key={index}
+                style={{borderColor: (selected == index) ? 'rgb(255, 102, 0)' : 'white'}}
+                whileHover={{ cursor: "pointer", scale: 0.95,}} className='post'>
+                    <motion.h1 className='post_text'>{companyName(text)}</motion.h1>
+                </motion.div>)}
+        </AnimatePresence>
      );
 }
  

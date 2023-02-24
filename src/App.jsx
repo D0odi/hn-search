@@ -38,7 +38,7 @@ function App() {
   const toggleLock = () => {
     if (!isLocked) {
       const linkInput = document.querySelector('.link_input');
-      setLink(linkInput.value);
+      setLink(apiLink(linkInput.value));
     }
     setIsLocked(!isLocked);
   }
@@ -51,6 +51,24 @@ function App() {
     wordInput.value = "";
   }
 
+  const apiLink = (link) => {
+    console.log(link);
+    try {
+      const regex = /\d+/g;
+      const match = link.match(regex);
+      if (match) {
+        const itemId = match.join('');
+        const api = `https://hacker-news.firebaseio.com/v0/item/${itemId}.json?print=pretty`
+        console.log(api)
+        return api;
+      } else {
+        console.log('No numbers found in link');
+      }
+    } catch (error) {
+      console.log('Error:', error);
+    }
+  }
+
   const removeWord = (index) => {
     const newWords = [...words]
     newWords.splice(index, 1)
@@ -58,16 +76,13 @@ function App() {
   }
 
   const postDisplay = (id) => {
-    setselectedPostId(id)
+    const idCheck = (id == selectedPostId) ? null : id;
+    setselectedPostId(idCheck)
   }
 
   return (
     <div className="App">
-      <AnimatePresence>
-        <motion.div>
-          <PostModal selectedPostId={selectedPostId} posts={posts} setselectedPostId={setselectedPostId} />
-        </motion.div>
-      </AnimatePresence>
+      <PostModal isLocked={isLocked} selectedPostId={selectedPostId} posts={posts} setselectedPostId={setselectedPostId}/>
       <div className="wrapper_left">
         <input type="text" className="words_input" placeholder='filter words...' maxLength={25} />
         <motion.button
@@ -102,9 +117,8 @@ function App() {
                  :      <FaLockOpen color='rgb(255, 102, 0)' size='30px' />}
           </motion.div>
         </motion.button>
-        <motion.div animate={{y: isLocked ? "-5rem" : "0rem"
-                              }} transition={{duration: 2}}>
-          <Posts posts={posts} words={words} postDisplay={postDisplay} isLocked={isLocked}></Posts>
+        <motion.div animate={{y: isLocked ? "-5rem" : "0rem"}} transition={{duration: 2}}>
+          <Posts selected={selectedPostId} posts={posts} words={words} postDisplay={postDisplay} isLocked={isLocked}></Posts>
         </motion.div>
       </div>
     </div>

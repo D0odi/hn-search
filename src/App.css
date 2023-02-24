@@ -112,9 +112,8 @@ input:focus  {
   position: absolute;
   top: 30rem;
   left: 8.43rem;
-  height: 20rem;
-  width: 35rem;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 .post_text {
   font-size: 30px;

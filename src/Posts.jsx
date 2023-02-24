@@ -1,26 +1,18 @@
 import Post from "./Post";
 import "./App.css"
-import { motion, AnimatePresence, easeInOut } from "framer-motion";
+import { motion } from "framer-motion";
 
-const Posts = ({posts, words, postDisplay, isLocked}) => {
-
-    const filter = (text) => {
-        if (text == null || text == '') return false;
-        for (let i = 0; i < words.length; i++) {
-            if (!text.includes(words[i])) {
-              return false;
-            }
-        }
-        return true;
-    }
+const Posts = ({posts, words, postDisplay, selected}) => {
 
     return (
         <motion.div className="posts_holder">
             {posts.map((post, index) => {   
-                if (post.text == null || !filter(post.text)) return;
+                if (post.text == null) return;
                 return (
-                    <motion.div key={index} onClick={() => postDisplay(index)}>
+                    <motion.div onClick={() => postDisplay(index)}>
                          <Post
+                            selected={selected}
+                            words={words}
                             index={index}
                             text={post.text}
                             postDisplay={postDisplay}>
