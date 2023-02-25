@@ -1,4 +1,5 @@
 import './App.css';
+import {FaLink} from "react-icons/fa";
 import { motion, AnimatePresence } from 'framer-motion';
 
 const PostModal = ({selectedPostId, posts, isLocked}) => {
@@ -36,8 +37,8 @@ const PostModal = ({selectedPostId, posts, isLocked}) => {
             {(isVisible(selectedPostId) && (
             <motion.div 
             key={selectedPostId}
-            initial={{ x: 600, y: -150, opacity: 0, scale: 0, height: '20rem', width: '35rem' }}
-            animate={{ x: 0, y: 0, opacity: 1, scale: 1, height: isLocked ? '20rem' : '25rem' }}
+            initial={{ x: 600, y: -150, opacity: 0, scale: 0, height: '20vh', width: '29vw' }}
+            animate={{ x: 0, y: 0, opacity: 1, scale: 1, height: isLocked ? '33.8vh' : '42.5vh' }}
             exit={{ x: -600, y: 150, opacity: 0, scale: 0 }}
             transition={{ duration: 1.5 }}
             className='post_modal'>
@@ -47,7 +48,13 @@ const PostModal = ({selectedPostId, posts, isLocked}) => {
                         <motion.div className='modal_by'>
                             <motion.h1 >{posts[selectedPostId].by}</motion.h1>
                             <motion.h1 >{convertTime(posts[selectedPostId].time)}</motion.h1>
-                            <motion.h1 className='model_links'>links</motion.h1>
+                            <motion.a className='model_link'
+                                      whileHover={{rotate: 90, scale: 1.1, borderRadius: '40px'}} 
+                                      transition={{duration: 1}}
+                                      href={`https://news.ycombinator.com/item?id=${posts[selectedPostId].id}`}
+                                      target="_blank" rel="noopener noreferrer">
+                                      <FaLink className='link_icon'/>
+                            </motion.a>
                         </motion.div>
                         <motion.p className='modal_text'>{cleanAndDecodeHTML(posts[selectedPostId].text)}</motion.p>
                     </motion.div>

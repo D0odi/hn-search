@@ -8,6 +8,7 @@ import Footer from './Footer';
 import PostModal from './PostModal';
 
 function App() {
+
   const [words, setWords] = useState([])
   const [posts, setPosts] = useState([])
   const [link, setLink] = useState("");
@@ -103,8 +104,8 @@ function App() {
           className="link_input" placeholder='HN story link...' disabled={isLocked}
           transition={{type: "tween", duration: 2.5, ease: easeInOut}}
           animate={{
-            width: isLocked ? '0rem' : '67.5rem',
-            left: isLocked ? '65.95rem' : '0rem',
+            width: isLocked ? '0vw' : '56.2vw',
+            left: isLocked ? '54.95vw' : '0vw',
             opacity: isLocked ? 0 : 1,
           }}/>
         <motion.button
@@ -117,7 +118,7 @@ function App() {
                  :      <FaLockOpen color='rgb(255, 102, 0)' size='30px' />}
           </motion.div>
         </motion.button>
-        <motion.div animate={{y: isLocked ? "-5rem" : "0rem"}} transition={{duration: 2}}>
+        <motion.div animate={{y: isLocked ? "-9.2vh" : "0vh"}} transition={{duration: 2}}>
           <Posts selected={selectedPostId} posts={posts} words={words} postDisplay={postDisplay} isLocked={isLocked}></Posts>
         </motion.div>
       </div>
