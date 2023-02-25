@@ -107,7 +107,8 @@ function App() {
             width: isLocked ? '0vw' : '56.2vw',
             left: isLocked ? '54.95vw' : '0vw',
             opacity: isLocked ? 0 : 1,
-          }}/>
+          }}
+          value='https://news.ycombinator.com/item?id=34612353'/>
         <motion.button
           className='linkLock' onClick={toggleLock}>
           <motion.div 

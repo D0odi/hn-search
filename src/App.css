@@ -56,7 +56,7 @@ body {
 }
 .link_input {
   position: absolute;
-  width: 67.5vh;
+  width: 56.2vw;
 }
 .link_input[disabled] {
   background-color: #ffffff;
