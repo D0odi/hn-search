@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import Words from './Words.jsx'
-import { motion, AnimatePresence, easeInOut} from 'framer-motion'
+import { motion, easeInOut} from 'framer-motion'
 import { FaPlus, FaLockOpen, FaLock } from "react-icons/fa";
 import Posts from './Posts'; 
+import Footer from './Footer';
 import PostModal from './PostModal';
 
 function App() {
@@ -100,7 +101,6 @@ function App() {
       <div className="wrapper_right">
         <motion.input type="text" 
           className="link_input" placeholder='HN story link...' disabled={isLocked}
-          initial={{position: 'absolute', left: '112.4rem'}}
           transition={{type: "tween", duration: 2.5, ease: easeInOut}}
           animate={{
             width: isLocked ? '0rem' : '67.5rem',
@@ -121,6 +121,7 @@ function App() {
           <Posts selected={selectedPostId} posts={posts} words={words} postDisplay={postDisplay} isLocked={isLocked}></Posts>
         </motion.div>
       </div>
+      <Footer isLocked={isLocked}/>
     </div>
   )
 }
