@@ -48,8 +48,9 @@ const PostModal = ({selectedPostId, posts, isLocked}) => {
                         <motion.div className='modal_by'>
                             <motion.h1 >{posts[selectedPostId].by}</motion.h1>
                             <motion.h1 >{convertTime(posts[selectedPostId].time)}</motion.h1>
-                            <motion.a className='model_link'
-                                      whileHover={{rotate: 90, scale: 1.1, borderRadius: '40px'}} 
+                            <motion.a className='modal_link'
+                                      initial={{borderRadius: '1vh'}}
+                                      whileHover={{rotate: 90, scale: 1.1, borderRadius: '3vh'}} 
                                       transition={{duration: 1}}
                                       href={`https://news.ycombinator.com/item?id=${posts[selectedPostId].id}`}
                                       target="_blank" rel="noopener noreferrer">

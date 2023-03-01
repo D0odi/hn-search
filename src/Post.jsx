@@ -41,7 +41,7 @@ const Post = ({index, text, words, selected}) => {
                 animate={{opacity: 1}}
                 key={index}
                 style={{borderColor: (selected == index) ? 'rgb(255, 102, 0)' : 'white'}}
-                whileHover={{ cursor: "pointer", scale: 0.95,}} className='post'>
+                whileHover={{ cursor: "pointer", scale: 0.95}} className='post'>
                     <motion.h1 className='post_text'>{companyName(text)}</motion.h1>
                 </motion.div>)}
         </AnimatePresence>
