@@ -1,7 +1,7 @@
 import './App.css';
 import {motion} from 'framer-motion';
 
-function IrregularShapeDiv() {
+function Guide() {
   return (
     <motion.div 
       whileHover={{x: '17vw'}}
@@ -25,4 +25,4 @@ function IrregularShapeDiv() {
     </motion.div>
   );
 }
-export default IrregularShapeDiv;
+export default Guide;

@@ -6,7 +6,7 @@ import { FaPlus, FaLockOpen, FaLock } from "react-icons/fa";
 import Posts from './Posts'; 
 import Footer from './Footer';
 import PostModal from './PostModal';
-import IrregularShapeDiv from './Guide';
+import Guide from './Guide';
 
 function App() {
 
@@ -109,7 +109,7 @@ function App() {
 
   return (
     <div className="App">
-      <IrregularShapeDiv/>
+      <Guide/>
       <PostModal isLocked={isLocked} selectedPostId={selectedPostId} posts={posts} setselectedPostId={setselectedPostId}/>
       <div className="wrapper_left">
         <input type="text" className="words_input"
