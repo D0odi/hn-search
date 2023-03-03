@@ -105,7 +105,7 @@ input:focus  {
   border: 0.5vh solid white;
   border-radius: 1vh;
   padding-inline: 1vh;
-  max-width: 27vw;
+  max-width: 14vw;
   font-size: 4vh;
 }
 
@@ -185,7 +185,7 @@ input:focus  {
   display: flex;
 }
 
-.word_container {
+.word_container, .ex_word {
   padding: 0.8vh;
   background: rgb(255, 255, 255);
   border-left: 0.4vh solid rgb(255, 102, 0);
@@ -259,4 +259,56 @@ input:focus  {
   top: 0;
   left: 0;
 }
+
+.guide_module {
+  background-color: rgb(235,235,228);
+  border: 0.6vh solid white;
+  z-index: 2;
+  width: 20vw;
+  height: 30vh;
+  border-radius: 4vh;
+  position: absolute;
+  bottom: 35vh;
+  left: -18vw;
+}
+
+.guide_wrapper {
+  top: 5.3vh;
+  position: relative;
+  left: 2vw;
+  max-width: 30vh;
+  display: grid;
+  grid-template-columns: 4.5vh 1fr;
+}
+
+.step {
+  font-size: 2.5vh;
+  font-weight: bold;
+}
+
+.step_description {
+  font-size: 2.2vh;
+  transform: translateY(-1.8vh);
+}
+
+.ex_word {
+  font-style: italic;
+}
+
+.guide_module_button {
+  font-size: 3.5vh;
+  font-weight: 300;
+  color: rgb(255, 102, 0);
+  writing-mode: vertical-rl;
+  text-orientation:upright;
+  padding: 1vh;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  right: 0;
+  top: 4.5vh;
+  transform: translateX(5.4vh);
+  border-radius: 20vh;
+}
+
+
 

@@ -15,15 +15,12 @@ const Post = ({index, text, words, selected}) => {
         return true;
     }
 
-    const companyName = (text) => {
+    const cleanText = (text) => {
         text = cleanAndDecodeHTML(text)
-        const first = text.indexOf('|')
-        const name = (text.substring(0, first).trim().length == 0) ? 
-        text.substring(first, text.indexOf('|')).trim() : text.substring(0, text.indexOf('|')).trim()
-        if (name.length == 0) {
+        if (text.length == 0) {
             return 'Small intro...'
         }
-        return name;
+        return text;
     }
 
     const cleanAndDecodeHTML = (text) => {
@@ -42,7 +39,7 @@ const Post = ({index, text, words, selected}) => {
                 key={index}
                 style={{borderColor: (selected == index) ? 'rgb(255, 102, 0)' : 'white'}}
                 whileHover={{ cursor: "pointer", scale: 0.95}} className='post'>
-                    <motion.h1 className='post_text'>{companyName(text)}</motion.h1>
+                    <motion.h1 className='post_text'>{cleanText(text)}</motion.h1>
                 </motion.div>)}
         </AnimatePresence>
      );

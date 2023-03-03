@@ -40,7 +40,7 @@ const PostModal = ({selectedPostId, posts, isLocked}) => {
             initial={{ x: 600, y: -150, opacity: 0, scale: 0, height: '20vh', width: '29vw' }}
             animate={{ x: 0, y: 0, opacity: 1, scale: 1, height: isLocked ? '33.8vh' : '42.5vh' }}
             exit={{ x: -600, y: 150, opacity: 0, scale: 0 }}
-            transition={{ duration: 1.5 }}
+            transition={{ duration: 0.8 }}
             className='post_modal'>
                 <AnimatePresence>
                     <motion.div

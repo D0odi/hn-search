@@ -6,6 +6,7 @@ import { FaPlus, FaLockOpen, FaLock } from "react-icons/fa";
 import Posts from './Posts'; 
 import Footer from './Footer';
 import PostModal from './PostModal';
+import IrregularShapeDiv from './Guide';
 
 function App() {
 
@@ -23,29 +24,43 @@ function App() {
   }
 
   useEffect(() => {
-    fetch(link)
+    {fetch(link)
       .then(response => response.json())
       .then(data => {
+        setIsLoading(true)
+        try {
+        setComments(data.kids)
+        }
+        catch {
+          setIsLoading(false)
+          console.log('no kids')
+        }
         setselectedPostId(null)
         setPosts([])
-        setIsLoading(true)
-        setComments(data.kids)
-      })
+      })}
   }, [link])
 
   useEffect(() => {
+    try {
     const promises = comments.map(comment_id => fetch(`https://hacker-news.firebaseio.com/v0/item/${comment_id}.json?print=pretty`)
       .then(response => response.json()));
     Promise.all(promises)
       .then(data => {
       setPosts(data)
       setIsLoading(false)
-    });
+    })}
+    catch {
+      setIsLocked(false)
+      setIsLoading(false)
+      console.log('wrong link')
+    }
   }, [comments]);
   
   const toggleLock = () => {
     if (!isLocked) {
       const linkInput = document.querySelector('.link_input');
+      setselectedPostId(null)
+      setComments([])
       setLink(apiLink(linkInput.value));
     }
     setIsLocked(!isLocked);
@@ -94,6 +109,7 @@ function App() {
 
   return (
     <div className="App">
+      <IrregularShapeDiv/>
       <PostModal isLocked={isLocked} selectedPostId={selectedPostId} posts={posts} setselectedPostId={setselectedPostId}/>
       <div className="wrapper_left">
         <input type="text" className="words_input"

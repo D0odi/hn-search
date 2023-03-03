@@ -12,15 +12,17 @@ const Posts = ({posts, words, postDisplay, selected, isLoading}) => {
 
     return (
         <div className="posts_holder">
-            {isLoading && Array(40)
+            {isLoading && Array(20)
                 .fill(0)    
-                .map((i) => <div className="post_skeleton" style={{ width: `${getRandom(27)}vw` }}>
-                                <Skeleton 
-                                 baseColor="rgb(235,235,228)"
-                                 duration={1.4}
-                                 highlightColor={"white"}
-                                 height={"5.5vh"}/>
-                            </div>
+                .map((i) => 
+                <div className="post_skeleton" style={{ width: `${getRandom(27)}vw` }}>
+                    <Skeleton 
+                        baseColor="rgb(235,235,228)" 
+                        duration={1.4} 
+                        highlightColor={"white"} 
+                        height={"5.5vh"}>
+                    </Skeleton>
+                </div>
                 )
             }
             {posts.map((post, index) => {   
